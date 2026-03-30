@@ -14,13 +14,13 @@ export const useInvoiceData = () => {
     discountRate: 0,
     currency: 'USD',
     logo: null,
-    brandColor: '#4f46e5', // default to Indigo-600
+    brandColor: '#0B4FD1', // default to blue-600
     template: 'modern',
   }));
 
   const updateSender = (updates: Partial<SenderInfo>) => setData((prev) => ({ ...prev, sender: { ...prev.sender, ...updates } }));
   const updateClient = (updates: Partial<ClientInfo>) => setData((prev) => ({ ...prev, client: { ...prev.client, ...updates } }));
-  
+
   const updateData = (updates: Partial<InvoiceData>) => setData((prev) => ({ ...prev, ...updates }));
 
   const addItem = () => {

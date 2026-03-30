@@ -20,7 +20,7 @@ export const DetailsForm: React.FC<Props> = ({ data, updateSender, updateClient,
               type="text"
               value={data.invoiceNumber}
               onChange={(e) => updateData({ invoiceNumber: e.target.value })}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2 border"
+              className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2 border transition-colors"
             />
           </div>
           <div>
@@ -29,7 +29,7 @@ export const DetailsForm: React.FC<Props> = ({ data, updateSender, updateClient,
               type="date"
               value={data.date}
               onChange={(e) => updateData({ date: e.target.value })}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2 border"
+              className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2 border transition-colors"
             />
           </div>
           <div>
@@ -38,7 +38,7 @@ export const DetailsForm: React.FC<Props> = ({ data, updateSender, updateClient,
               type="date"
               value={data.dueDate || ''}
               onChange={(e) => updateData({ dueDate: e.target.value })}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2 border"
+              className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2 border transition-colors"
             />
           </div>
         </div>
@@ -57,7 +57,7 @@ export const DetailsForm: React.FC<Props> = ({ data, updateSender, updateClient,
               value={data.sender.name}
               onChange={(e) => updateSender({ name: e.target.value })}
               placeholder="Your Company Name"
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2 border"
+              className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2 border transition-colors"
             />
           </div>
           <div>
@@ -67,7 +67,7 @@ export const DetailsForm: React.FC<Props> = ({ data, updateSender, updateClient,
               value={data.sender.email}
               onChange={(e) => updateSender({ email: e.target.value })}
               placeholder="you@company.com"
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2 border"
+              className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2 border transition-colors"
             />
           </div>
           <div>
@@ -76,7 +76,7 @@ export const DetailsForm: React.FC<Props> = ({ data, updateSender, updateClient,
               value={data.sender.address}
               onChange={(e) => updateSender({ address: e.target.value })}
               placeholder="123 Business Rd..."
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2 border"
+              className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2 border transition-colors"
               rows={3}
             />
           </div>
@@ -92,7 +92,7 @@ export const DetailsForm: React.FC<Props> = ({ data, updateSender, updateClient,
               value={data.client.name}
               onChange={(e) => updateClient({ name: e.target.value })}
               placeholder="Client Name"
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2 border"
+              className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2 border transition-colors"
             />
           </div>
           <div>
@@ -102,7 +102,7 @@ export const DetailsForm: React.FC<Props> = ({ data, updateSender, updateClient,
               value={data.client.email}
               onChange={(e) => updateClient({ email: e.target.value })}
               placeholder="client@email.com"
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2 border"
+              className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2 border transition-colors"
             />
           </div>
           <div>
@@ -111,7 +111,7 @@ export const DetailsForm: React.FC<Props> = ({ data, updateSender, updateClient,
               value={data.client.address}
               onChange={(e) => updateClient({ address: e.target.value })}
               placeholder="Client Address..."
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2 border"
+              className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2 border transition-colors"
               rows={3}
             />
           </div>
