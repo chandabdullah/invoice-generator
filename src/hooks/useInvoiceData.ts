@@ -16,6 +16,7 @@ export const useInvoiceData = () => {
     logo: null,
     brandColor: '#0B4FD1', // default to blue-600
     template: 'modern',
+    notes: '',
   }));
 
   const updateSender = (updates: Partial<SenderInfo>) => setData((prev) => ({ ...prev, sender: { ...prev.sender, ...updates } }));
