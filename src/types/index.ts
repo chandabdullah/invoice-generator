@@ -17,7 +17,7 @@ export interface SenderInfo {
   address: string;
 }
 
-export type TemplateType = 'minimal' | 'corporate' | 'modern' | 'elegant' | 'bold';
+export type TemplateType = 'minimal' | 'corporate' | 'modern' | 'elegant' | 'bold' | 'slate' | 'neon' | 'classic';
 
 export type CurrencyType = 'USD' | 'EUR' | 'GBP';
 
@@ -34,6 +34,7 @@ export interface InvoiceData {
   logo: string | null;
   brandColor: string;
   template: TemplateType;
+  notes: string;
 }
 
 export interface InvoiceState extends InvoiceData {

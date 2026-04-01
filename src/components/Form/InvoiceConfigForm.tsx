@@ -8,41 +8,119 @@ interface Props {
   handleLogoUpload: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
+type TemplateMeta = {
+  id: TemplateType;
+  label: string;
+  desc: string;
+  /** CSS classes for the mini swatch */
+  accent: string;
+  dots: string; // bg class for stripe/swatch
+};
+
+const templates: TemplateMeta[] = [
+  {
+    id: 'modern',
+    label: 'Modern',
+    desc: 'Clean & colorful',
+    accent: 'bg-blue-600',
+    dots: 'bg-blue-100',
+  },
+  {
+    id: 'minimal',
+    label: 'Minimal',
+    desc: 'Pure simplicity',
+    accent: 'bg-gray-900',
+    dots: 'bg-gray-100',
+  },
+  {
+    id: 'corporate',
+    label: 'Corporate',
+    desc: 'Bold & structured',
+    accent: 'bg-indigo-700',
+    dots: 'bg-indigo-100',
+  },
+  {
+    id: 'elegant',
+    label: 'Elegant',
+    desc: 'Refined centred',
+    accent: 'bg-amber-500',
+    dots: 'bg-amber-50',
+  },
+  {
+    id: 'bold',
+    label: 'Bold',
+    desc: 'Full-bleed header',
+    accent: 'bg-rose-600',
+    dots: 'bg-rose-100',
+  },
+  {
+    id: 'slate',
+    label: 'Slate',
+    desc: 'Dark sidebar',
+    accent: 'bg-slate-800',
+    dots: 'bg-slate-200',
+  },
+  {
+    id: 'neon',
+    label: 'Neon',
+    desc: 'Dark & vivid',
+    accent: 'from-violet-600 to-fuchsia-500 bg-gradient-to-r',
+    dots: 'bg-violet-100',
+  },
+  {
+    id: 'classic',
+    label: 'Classic',
+    desc: 'Ledger style',
+    accent: 'bg-emerald-700',
+    dots: 'bg-emerald-50',
+  },
+];
+
 export const InvoiceConfigForm: React.FC<Props> = ({ data, updateData, handleLogoUpload }) => {
   const currencies: CurrencyType[] = ['USD', 'EUR', 'GBP'];
-  const templates: { id: TemplateType; label: string }[] = [
-    { id: 'minimal', label: 'Minimal' },
-    { id: 'corporate', label: 'Corporate' },
-    { id: 'modern', label: 'Modern' },
-    { id: 'elegant', label: 'Elegant' },
-    { id: 'bold', label: 'Bold' },
-  ];
 
   return (
     <div className="space-y-6 bg-white dark:bg-gray-900 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 mb-6 transition-colors">
-      <div className="flex flex-col sm:flex-row gap-6 items-start sm:items-center justify-between">
 
-        {/* Template Selection */}
-        <div className="flex-1 w-full">
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Template</label>
-          <div className="flex flex-wrap gap-2">
-            {templates.map((t) => (
+      {/* Template Selection */}
+      <div>
+        <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
+          Template Style
+        </label>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+          {templates.map((t) => {
+            const active = data.template === t.id;
+            return (
               <button
                 key={t.id}
                 onClick={() => updateData({ template: t.id })}
-                className={`flex-1 min-w-[30%] py-2 px-3 rounded-lg text-sm font-medium transition-colors ${data.template === t.id
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+                className={`relative flex flex-col items-start p-3 rounded-xl border-2 transition-all text-left group
+                  ${active
+                    ? 'border-blue-500 bg-blue-50 dark:bg-blue-950/40 shadow-md'
+                    : 'border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 bg-white dark:bg-gray-800'
                   }`}
               >
-                {t.label}
+                {/* Mini swatch */}
+                <span className={`w-full h-2 rounded-full mb-2 ${t.accent}`} />
+                <span className={`text-xs font-bold ${active ? 'text-blue-700 dark:text-blue-300' : 'text-gray-700 dark:text-gray-200'}`}>
+                  {t.label}
+                </span>
+                <span className="text-[10px] text-gray-400 dark:text-gray-500 leading-tight mt-0.5">
+                  {t.desc}
+                </span>
+                {active && (
+                  <span className="absolute top-2 right-2 w-2 h-2 rounded-full bg-blue-500" />
+                )}
               </button>
-            ))}
-          </div>
+            );
+          })}
         </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 border-t border-gray-100 dark:border-gray-800 transition-colors">
 
         {/* Currency Selection */}
-        <div className="w-full sm:w-32">
+        <div>
           <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Currency</label>
           <select
             value={data.currency}
@@ -52,9 +130,6 @@ export const InvoiceConfigForm: React.FC<Props> = ({ data, updateData, handleLog
             {currencies.map(c => <option key={c} value={c}>{c}</option>)}
           </select>
         </div>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-gray-100 dark:border-gray-800 transition-colors">
 
         {/* Brand Color */}
         <div>
@@ -89,7 +164,7 @@ export const InvoiceConfigForm: React.FC<Props> = ({ data, updateData, handleLog
                 <label className="flex justify-center w-full px-4 py-3 border-2 border-gray-300 dark:border-gray-700 border-dashed rounded-lg cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
                   <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
                     <Upload size={16} />
-                    <span>Upload Logo Image</span>
+                    <span>Upload Logo</span>
                   </div>
                   <input type="file" className="hidden" accept="image/*" onChange={handleLogoUpload} />
                 </label>

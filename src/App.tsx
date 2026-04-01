@@ -6,6 +6,7 @@ import { InvoiceConfigForm } from './components/Form/InvoiceConfigForm';
 import { DetailsForm } from './components/Form/DetailsForm';
 import { LineItemsForm } from './components/Form/LineItemsForm';
 import { SummaryForm } from './components/Form/SummaryForm';
+import { NotesForm } from './components/Form/NotesForm';
 import { InvoiceDocument } from './components/PDF/InvoiceDocument';
 import type { InvoiceState } from './types';
 
@@ -20,6 +21,7 @@ function InvoiceEditor({ onSync }: { onSync: (state: InvoiceState) => void }) {
     removeItem,
     handleLogoUpload,
   } = useInvoiceData();
+
 
   const [isDarkMode, setIsDarkMode] = useState(false);
 
@@ -100,6 +102,11 @@ function InvoiceEditor({ onSync }: { onSync: (state: InvoiceState) => void }) {
             data={state}
             updateData={updateData}
           />
+        </div>
+
+        {/* Notes / Bank Details */}
+        <div className="mb-6">
+          <NotesForm data={state} updateData={updateData} />
         </div>
 
         <div className="flex justify-end sticky bottom-6 z-10">
